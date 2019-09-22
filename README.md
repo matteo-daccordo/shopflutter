@@ -1,4 +1,4 @@
-# movies_diary
+# shop_flutter
 
 A new Flutter project.
 
