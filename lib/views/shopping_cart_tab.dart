@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
-import 'package:movies_diary/styles.dart';
+import 'package:shop_flutter/styles.dart';
 import 'package:provider/provider.dart';
 
 import '../model/product.dart';

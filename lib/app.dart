@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:movies_diary/tabs/profile_tab.dart';
+import 'package:shop_flutter/views//profile_tab.dart';
 
-import 'tabs/product_list_tab.dart';
-import 'tabs/search_tab.dart';
-import 'tabs/shopping_cart_tab.dart';
+import 'views/product_list_tab.dart';
+import 'views/search_tab.dart';
+import 'views/shopping_cart_tab.dart';
 
 class StoreApp extends StatelessWidget {
 	@override

@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_flutter/model/app_state_model.dart';
 import 'package:provider/provider.dart';
 
-import '../model/app_state_model.dart';
+
 
 class ProfileTab extends StatefulWidget {
   @override
