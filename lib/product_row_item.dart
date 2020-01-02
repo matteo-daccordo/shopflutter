@@ -39,7 +39,7 @@ class ProductRowItem extends StatelessWidget {
                 borderRadius: BorderRadius.circular(4),
                 child: Image.asset(
                   product.assetName,
-                  package: product.assetPackage,
+                  //package: product.assetPackage,
                   fit: BoxFit.cover,
                   width: 76,
                   height: 76,

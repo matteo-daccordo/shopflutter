@@ -38,6 +38,16 @@ abstract class Styles {
     color: CupertinoColors.inactiveGray,
   );
 
+  static const TextStyle title = TextStyle(
+    fontSize: 30.0,
+    fontWeight: FontWeight.bold,
+  );
+
+  static const TextStyle subtitle = TextStyle(
+    fontSize: 20.0,
+    fontWeight: FontWeight.bold,
+  );
+
   static const Color productRowDivider = Color(0xFFD9D9D9);
 
   static const Color scaffoldBackground = Color(0xfff0f0f0);
@@ -47,6 +57,12 @@ abstract class Styles {
   static const Color searchCursorColor = Color.fromRGBO(0, 122, 255, 1);
 
   static const Color searchIconColor = Color.fromRGBO(128, 128, 128, 1);
+
+  static const Color primaryColor = Color(0xFF3EBACE);
+
+  static const Color accentColor = Color(0xFFD8ECF1);
+
+  static const Color scaffoldBackgroundColor = Color(0xFFF3F5F7);
 
   static get productRowItemName => null;
 }

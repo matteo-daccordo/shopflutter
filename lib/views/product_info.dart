@@ -1,9 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shop_flutter/model/product.dart';
-import 'package:provider/provider.dart';
-
-import '../model/app_state_model.dart';
 
 class ProductInfo extends StatelessWidget {
   Product product;
