@@ -11,13 +11,11 @@ import 'package:shop_flutter/widgets/preferred_carousel.dart';
 class StoreHomePage extends StatefulWidget{
   @override
   _StoreHomeState createState() => _StoreHomeState();
-  
 }
 
 class _StoreHomeState extends State<StoreHomePage> {
   List<Widget> _pages;
   Widget _currentPage;
-  int _selectedIndex = 0;
 
   List<IconData> _icons = [
       FontAwesomeIcons.coffee,
@@ -28,34 +26,44 @@ class _StoreHomeState extends State<StoreHomePage> {
 
   final PageStorageBucket bucket = PageStorageBucket();
   int _currentTab;
+  Widget homeTab;
+  Widget searchTab;
+  Widget cartTab;
+  Widget profileTab;
 
   @override
   void initState(){
-    _pages = [ homePage(), SearchTab(), ShoppingCartTab(), ProfileTab() ];
-    _currentPage = homePage();
+    super.initState();
+
+    homeTab = homePage();
+    searchTab = SearchTab();
+    cartTab = ShoppingCartTab();
+    profileTab = ProfileTab();
+    _pages = [homeTab, searchTab, cartTab, profileTab];
+
+    _currentPage = homeTab;
     _currentTab = 0;
 
-    super.initState();
   }
 
   Widget _buildIcon(int index) {
     return GestureDetector(
       onTap: () {
         setState(() {
-          _selectedIndex = index;
+          print(index);
         });
       },
       child: Container(
         height: 60.0,
         width: 60.0,
         decoration: BoxDecoration(
-          color: _selectedIndex == index ? Styles.accentColor : Color(0xFFE7EBEE),
+          color: Styles.accentColor,
           borderRadius: BorderRadius.circular(30.0),
         ),
         child: Icon(
           _icons[index],
           size: 25.0,
-          color: _selectedIndex == index ? Styles.primaryColor : Color(0xFFB4C1C4),
+          color: Styles.primaryColor,
         ),
       ),
     );
