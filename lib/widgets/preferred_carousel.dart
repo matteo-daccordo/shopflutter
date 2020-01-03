@@ -2,8 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:shop_flutter/model/product.dart';
 import 'package:shop_flutter/model/product_repo.dart';
 import 'package:shop_flutter/styles.dart';
+import 'package:shop_flutter/widgets/preferred_item.dart';
 
-class MostSoldCarousel extends StatelessWidget {
+class PreferredCarousel extends StatefulWidget {
+  final Category category;
+  final String title;
+
+  PreferredCarousel({this.category, this.title});
+  @override
+  _PreferredCarouselState createState() => _PreferredCarouselState();
+}
+
+class _PreferredCarouselState extends State<PreferredCarousel> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -13,7 +23,8 @@ class MostSoldCarousel extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text('Most Sold Products', style: Styles.subtitle),
+              Text(this.widget.title,
+                  style: Styles.subtitle),
               GestureDetector(
                 onTap: () => print('See all'),
                 child: Text(
@@ -29,16 +40,16 @@ class MostSoldCarousel extends StatelessWidget {
         ),
         Container(
           height: 300.0,
-          color: Colors.blue,
           child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: ProductsRepository.loadProducts(Category.all).length,
-            itemBuilder: (BuildContext context, int index ) {
-              List<Product> list = ProductsRepository.loadProducts(Category.all);
-              Product product = list[index];
-
-            },
-          ),
+              scrollDirection: Axis.horizontal,
+              itemCount:
+                  ProductsRepository.loadProducts(this.widget.category).length,
+              itemBuilder: (BuildContext context, int index) {
+                List<Product> list =
+                    ProductsRepository.loadProducts(this.widget.category);
+                Product product = list[index];
+                return PreferredItem(product: product);
+              }),
         ),
       ],
     );

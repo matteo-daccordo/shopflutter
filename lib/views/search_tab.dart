@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
+import 'package:shop_flutter/widgets/product_row_item.dart';
+import 'package:shop_flutter/widgets/search_bar.dart';
 import '../model/app_state_model.dart';
-import '../product_row_item.dart';
-import '../search_bar.dart';
 import '../styles.dart';
 
 class SearchTab extends StatefulWidget {
@@ -55,12 +55,13 @@ class _SearchTabState extends State<SearchTab> {
             _buildSearchBox(),
             Expanded(
               child: ListView.builder(
+                padding: EdgeInsets.only(top: 10.0, bottom: 15.0),
+                itemCount: results.length,
                 itemBuilder: (context, index) => ProductRowItem(
                   index: index,
                   product: results[index],
                   lastItem: index == results.length - 1,
                 ),
-                itemCount: results.length,
               ),
             ),
           ],
@@ -71,7 +72,7 @@ class _SearchTabState extends State<SearchTab> {
 
   Widget _buildSearchBox() {
     return Padding(
-      padding: const EdgeInsets.all(8),
+      padding: EdgeInsets.fromLTRB(12, 20, 12, 8),
       child: SearchBar(
         controller: _controller,
         focusNode: _focusNode,

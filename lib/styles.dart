@@ -4,27 +4,33 @@ import 'package:flutter/material.dart';
 abstract class Styles {
   static const TextStyle productNameRow = TextStyle(
     color: Color.fromRGBO(0, 0, 0, 0.8),
-    fontSize: 18,
+    fontSize: 20,
     fontStyle: FontStyle.normal,
     fontWeight: FontWeight.normal,
   );
 
   static const TextStyle productTotal = TextStyle(
     color: Color.fromRGBO(0, 0, 0, 0.8),
-    fontSize: 18,
+    fontSize: 20,
     fontStyle: FontStyle.normal,
     fontWeight: FontWeight.bold,
   );
 
   static const TextStyle productRowItemPrice = TextStyle(
     color: Color(0xFF8E8E93),
-    fontSize: 13,
+    fontSize: 18,
     fontWeight: FontWeight.w300,
+  );
+
+   static const TextStyle productRowItemName = TextStyle(
+    color: Color(0xFF8E8E93),
+    fontSize: 20,
+    fontWeight: FontWeight.w400,
   );
 
   static const TextStyle searchText = TextStyle(
     color: Color.fromRGBO(0, 0, 0, 1),
-    fontSize: 14,
+    fontSize: 18,
     fontStyle: FontStyle.normal,
     fontWeight: FontWeight.normal,
   );
@@ -63,6 +69,4 @@ abstract class Styles {
   static const Color accentColor = Color(0xFFD8ECF1);
 
   static const Color scaffoldBackgroundColor = Color(0xFFF3F5F7);
-
-  static get productRowItemName => null;
 }

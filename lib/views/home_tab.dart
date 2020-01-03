@@ -1,24 +1,42 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:shop_flutter/model/product.dart';
 import 'package:shop_flutter/styles.dart';
-import 'package:shop_flutter/widgets/mostsold_carousel.dart';
+import 'package:shop_flutter/views/profile_tab.dart';
+import 'package:shop_flutter/views/search_tab.dart';
+import 'package:shop_flutter/views/shopping_cart_tab.dart';
+import 'package:shop_flutter/widgets/preferred_carousel.dart';
 
 class StoreHomePage extends StatefulWidget{
   @override
   _StoreHomeState createState() => _StoreHomeState();
+  
 }
 
 class _StoreHomeState extends State<StoreHomePage> {
-  int _currentTab = 0;
+  List<Widget> _pages;
+  Widget _currentPage;
   int _selectedIndex = 0;
-  
+
   List<IconData> _icons = [
-    FontAwesomeIcons.coffee,
-    FontAwesomeIcons.bed,
-    FontAwesomeIcons.socks,
-    FontAwesomeIcons.book,
-  ];
+      FontAwesomeIcons.coffee,
+      FontAwesomeIcons.bed,
+      FontAwesomeIcons.socks,
+      FontAwesomeIcons.book,
+    ];
+
+  final PageStorageBucket bucket = PageStorageBucket();
+  int _currentTab;
+
+  @override
+  void initState(){
+    _pages = [ homePage(), SearchTab(), ShoppingCartTab(), ProfileTab() ];
+    _currentPage = homePage();
+    _currentTab = 0;
+
+    super.initState();
+  }
 
   Widget _buildIcon(int index) {
     return GestureDetector(
@@ -26,7 +44,6 @@ class _StoreHomeState extends State<StoreHomePage> {
         setState(() {
           _selectedIndex = index;
         });
-        print(_selectedIndex);
       },
       child: Container(
         height: 60.0,
@@ -47,7 +64,49 @@ class _StoreHomeState extends State<StoreHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
+      body: PageStorage(
+        child: _currentPage,
+        bucket: bucket,
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentTab,
+        onTap: (int value) {
+          setState(() {
+            _currentTab = value;
+            _currentPage = _pages[value];
+          });
+        },
+        type: BottomNavigationBarType.fixed,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home, size: 30, color: Colors.grey,),
+            title: SizedBox.shrink(),
+            activeIcon: Icon(Icons.home, size: 30, color: Styles.primaryColor,),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search, size: 30, color: Colors.grey,),
+            title: SizedBox.shrink(),
+            activeIcon: Icon(Icons.search, size: 30, color: Styles.primaryColor,),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart, size: 30, color: Colors.grey),
+            title: SizedBox.shrink(),
+            activeIcon: Icon(Icons.shopping_cart, size: 30, color: Styles.primaryColor,),
+          ),
+          BottomNavigationBarItem(
+            icon: CircleAvatar(
+              radius: 15.0,
+              backgroundImage: NetworkImage('http://i.imgur.com/zL4Krbz.jpg'),
+            ),
+            title: SizedBox.shrink()
+          ),
+        ],
+      )
+    );
+  }
+
+  Widget homePage(){
+    return SafeArea(
         child: ListView(
           padding: EdgeInsets.symmetric(vertical: 30.0),
           children: <Widget>[
@@ -70,38 +129,11 @@ class _StoreHomeState extends State<StoreHomePage> {
                   .toList(),
             ),
             SizedBox(height: 24.0),
-            MostSoldCarousel(),
-            //DestinationCarousel(),
-            //SizedBox(height: 20.0),
-            //HotelCarousel(),
+            PreferredCarousel(category: Category.all, title: 'Preferred items',),
+            SizedBox(height: 24.0),
+            PreferredCarousel(category: Category.home, title: 'Most sold items',),
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentTab,
-        //onTap: {},
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: SizedBox.shrink()
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            title: SizedBox.shrink()
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            title: SizedBox.shrink(),
-          ),
-          BottomNavigationBarItem(
-            icon: CircleAvatar(
-              radius: 15.0,
-              backgroundImage: NetworkImage('http://i.imgur.com/zL4Krbz.jpg'),
-            ),
-            title: SizedBox.shrink()
-          ),
-        ],
-      )
-    );
+      );
   }
 }

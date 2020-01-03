@@ -2,4 +2,5 @@
 /ios
 /android
 /gen
+/.vscode
 /.dart_tool
