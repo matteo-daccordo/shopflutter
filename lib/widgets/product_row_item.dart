@@ -59,8 +59,7 @@ class _ProductRowItemState extends State<ProductRowItem> {
                 SizedBox(height: 10.0),
                 Row(
                   children: <Widget>[
-                    FlatButton(
-                      padding: EdgeInsets.all(10),
+                    TextButton(
                       child: Icon(
                         FontAwesomeIcons.plusCircle,
                         semanticLabel: 'Minus',
@@ -74,8 +73,7 @@ class _ProductRowItemState extends State<ProductRowItem> {
                     Provider.of<AppStateModel>(context).quantityItemCart(widget.index),
                     textAlign: TextAlign.center,
                   ),
-                    FlatButton(
-                      padding: EdgeInsets.all(10),
+                    TextButton(
                       child: Icon(
                         FontAwesomeIcons.minusCircle,
                         semanticLabel: 'Minus',
