@@ -88,25 +88,25 @@ class _StoreHomeState extends State<StoreHomePage> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home, size: 30, color: Colors.grey,),
-            title: SizedBox.shrink(),
+            label: '',
             activeIcon: Icon(Icons.home, size: 30, color: Styles.primaryColor,),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search, size: 30, color: Colors.grey,),
-            title: SizedBox.shrink(),
+            label: '',
             activeIcon: Icon(Icons.search, size: 30, color: Styles.primaryColor,),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart, size: 30, color: Colors.grey),
-            title: SizedBox.shrink(),
+            label: '',
             activeIcon: Icon(Icons.shopping_cart, size: 30, color: Styles.primaryColor,),
           ),
           BottomNavigationBarItem(
+            label: '',
             icon: CircleAvatar(
               radius: 15.0,
               backgroundImage: NetworkImage('http://i.imgur.com/zL4Krbz.jpg'),
             ),
-            title: SizedBox.shrink()
           ),
         ],
       )
