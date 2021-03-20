@@ -12,7 +12,7 @@ void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   return runApp(
     ChangeNotifierProvider<AppStateModel>(
-	    builder: (context) => AppStateModel()..loadProducts(),
+	    create: (context) => AppStateModel()..loadProducts(),
       child: StoreApp(),
     ),
   );
